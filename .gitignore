@@ -1,0 +1,25 @@
+.vs/
+# Ignore build output and temporary files
+bin/
+obj/
+*.user
+*.vspscc
+*.vssscc
+
+# Ignore build results
+*.exe
+*.dll
+*.pdb
+*.cache
+*.log
+*.env
+
+# Ignore Visual Studio files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ignore local configuration files
+appsettings.*.json
