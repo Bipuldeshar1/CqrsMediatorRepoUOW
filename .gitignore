@@ -1,4 +1,4 @@
-.vs/
+
 # Ignore build output and temporary files
 bin/
 obj/

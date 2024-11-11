@@ -17,6 +17,7 @@ namespace Infrastructure.context
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.ApplyConfiguration(new ProductEntityTypeConfiguration());
         }
     }
 }

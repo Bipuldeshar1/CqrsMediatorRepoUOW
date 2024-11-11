@@ -1,10 +1,14 @@
 using Api.Dependencies;
+using Domain.Repository;
+using Infrastructure.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.ServiceConfiguration(builder.Configuration);
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
