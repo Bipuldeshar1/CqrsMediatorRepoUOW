@@ -1,5 +1,7 @@
 ﻿using Domain.Entities;
 using Domain.Repository;
+using Infrastructure.context;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,29 +12,37 @@ namespace Infrastructure.Repository
 {
     public class ProductRepository : IProductRepository
     {
-        public Task AddProduct(Product product)
+        private readonly AppDbCOntext _context;
+
+        public ProductRepository(AppDbCOntext context)
         {
-            throw new NotImplementedException();
+            this._context = context;
+        }
+        public async Task AddProduct(ProductModel product)
+        {
+          await _context.AddAsync(product);
         }
 
-        public Task DeleteProduct(Product product)
+        public async Task DeleteProduct(ProductModel product)
         {
-            throw new NotImplementedException();
+             _context.Remove(product);
         }
 
-        public Task<List<Product>> getAllProducts()
+        public async Task<List<ProductModel>> getAllProducts()
         {
-            throw new NotImplementedException();
+            return await _context.products.AsNoTracking().ToListAsync();
         }
 
-        public Task<Product> getSingleProduct(Guid productGuid)
+        public async Task<ProductModel> getSingleProduct(int productId)
         {
-            throw new NotImplementedException();
+           return await _context.products.AsNoTracking().FirstOrDefaultAsync(x=>x.Id== productId);   
+
         }
 
-        public Task UpdateProduct(Product product)
+        public async Task UpdateProduct(ProductModel product)
         {
-            throw new NotImplementedException();
+             _context.products.Update(product);
+           
         }
     }
 }

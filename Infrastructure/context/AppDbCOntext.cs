@@ -12,7 +12,7 @@ namespace Infrastructure.context
     {
         public AppDbCOntext(DbContextOptions<AppDbCOntext>context):base(context) { }
 
-        public DbSet<Product> products { get; set; }
+        public DbSet<ProductModel> products { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

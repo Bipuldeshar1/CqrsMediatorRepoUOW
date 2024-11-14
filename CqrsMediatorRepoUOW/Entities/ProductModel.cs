@@ -6,20 +6,21 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class Product
+    public class ProductModel
     {
         public int Id { get; protected set; }
         public Guid ProductGuid { get; protected set; }
         public string Name { get; protected set; }
         public string Description { get; protected set; }
         public float Price { get; protected set; }
-        public bool IsDeleted {  get; protected set; }=false;
-        protected Product(string name, string description, float price)
+        public bool IsDeleted {  get; protected set; }
+        public ProductModel(string name, string description, float price)
         {
             ProductGuid=Guid.NewGuid();
             Name = name;
             Description = description;
             Price = price;
+           
         }
        
         public virtual void Update(string name, string description,float price)

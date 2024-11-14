@@ -1,5 +1,8 @@
-﻿using Domain.Entities;
+﻿using Application.Cqrs.Command.Product;
+using Application.Cqrs.Query.Product;
+using Domain.Entities;
 using Domain.Repository;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -10,51 +13,99 @@ namespace Api.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private readonly IProductRepository _productRepository;
 
-        public ProductController(IProductRepository productRepository)
+        private readonly IMediator _mediator;
+
+        public ProductController(IMediator mediator)
         {
-            this._productRepository = productRepository;
+
+            this._mediator = mediator;
         }
 
         [HttpGet]
         [Route("getAll")]
         public async Task<IActionResult> GetAllProduct()
         {
-            var result = await _productRepository.getAllProducts();
-            return Ok(result);    
+            try
+            {
+                var query = new GetAllProductQuery();
+                var result = await _mediator.Send(query);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
         [HttpGet]
-        [Route("getSingleProduct")]
-        public async Task<IActionResult> GetSingleProduct()
+        [Route("getSingleProduct/{productId}")]
+        public async Task<IActionResult> GetSingleProduct(int productId)
         {
-            var result = await _productRepository.getAllProducts();
-            return Ok(result);
+            try
+            {
+                var query = new GetProductByIdQuery(productId);
+                var result = await _mediator.Send(query);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
+
 
         [HttpPost]
         [Route("add")]
-        public async Task<IActionResult> AddProduct(Product product)
+        public async Task<IActionResult> AddProduct(ProductModel product)
         {
-             await _productRepository.AddProduct(product);
-            return Ok();
+            try
+            {
+                var query = new AddProductCommand(product.Name, product.Description, product.Price);
+                var result = await _mediator.Send(query);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+
         }
 
         [HttpPatch]
         [Route("update")]
-        public async Task<IActionResult> Updateproduct(Product product)
+        public async Task<IActionResult> Updateproduct(ProductModel product)
         {
-            await _productRepository.UpdateProduct(product);
-            return Ok();
+            try
+            {
+                var query = new UpdateProductCommand(product.Id, product.ProductGuid, product.Name, product.Description, product.Price, product.IsDeleted);
+                var result = await _mediator.Send(query);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
 
         [HttpDelete]
-        [Route("delete/{productGuid}")]
-        public async Task<IActionResult> DeleteProduct([FromQuery]Guid productGuid)
+        [Route("delete/{productId}")]
+        public async Task<IActionResult> DeleteProduct(int productId)
         {
-           var product= await _productRepository.getSingleProduct(productGuid);
-            await _productRepository.DeleteProduct(product);
-            return Ok();
+            try
+            {
+                var query = new DeleteProductCommand(productId);
+                var result = await _mediator.Send(query);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
     }
 }

@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.context
 {
-    public class ProductEntityTypeConfiguration : IEntityTypeConfiguration<Product>
+    public class ProductEntityTypeConfiguration : IEntityTypeConfiguration<ProductModel>
     {
-        public void Configure(EntityTypeBuilder<Product> builder)
+        public void Configure(EntityTypeBuilder<ProductModel> builder)
         {
-            throw new NotImplementedException();
+          
         }
     }
 }

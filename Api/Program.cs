@@ -1,6 +1,10 @@
 using Api.Dependencies;
+using Application.Cqrs.Query.Product;
 using Domain.Repository;
+using Domain.UnitOfWork;
 using Infrastructure.Repository;
+using Infrastructure.unitOfWork;
+using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +13,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.ServiceConfiguration(builder.Configuration);
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+builder.Services.AddMediatR(typeof(GetAllProductQueryHandler).Assembly);
+
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

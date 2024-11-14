@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "CqrsMediatorRepoUOW\Domain.csproj", "{F794588F-A84B-43D3-8E1A-FB516F9ACB1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "CqrsMediatorRepoUOW\Domain.csproj", "{F794588F-A84B-43D3-8E1A-FB516F9ACB1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{8234D6CD-4664-4FB0-A4A0-21D8BFE8BF51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{8234D6CD-4664-4FB0-A4A0-21D8BFE8BF51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{B8BE6E61-4BA1-4F4C-BA72-3BA7A3A44F87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{B8BE6E61-4BA1-4F4C-BA72-3BA7A3A44F87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{08AF2669-546B-44CA-8B82-BA85AE2F7708}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{08AF2669-546B-44CA-8B82-BA85AE2F7708}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{B45B2ED2-2100-4E99-B45D-AF6613423D0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{08AF2669-546B-44CA-8B82-BA85AE2F7708}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08AF2669-546B-44CA-8B82-BA85AE2F7708}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08AF2669-546B-44CA-8B82-BA85AE2F7708}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B45B2ED2-2100-4E99-B45D-AF6613423D0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B45B2ED2-2100-4E99-B45D-AF6613423D0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B45B2ED2-2100-4E99-B45D-AF6613423D0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B45B2ED2-2100-4E99-B45D-AF6613423D0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
